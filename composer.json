@@ -1,0 +1,9 @@
+{
+  "name": "template",
+  "description": "composer example template",
+  "require": {
+    "laravel/laravel": "v4.0.0",
+    "guzzle/guzzle": "~3.9"
+    
+  }
+}
