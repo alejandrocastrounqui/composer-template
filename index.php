@@ -7,6 +7,4 @@ $request = $client->get('http://www.google.com');
 $result = $request->send();
 print_r($result);
 
-echo 'hola';
-
 ?>

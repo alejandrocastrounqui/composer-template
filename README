@@ -62,5 +62,40 @@ composer update --no-scripts
 
 
 
+##############################
+#           xdebug           #
+##############################
+
+sudo apt-get install php5-dev php-pear
+
+sudo pecl install xdebug
+
+# add to php.ini
+# '20090626+lfs' can change depending on OS version
+
+[xdebug]
+; php interpreter to debug code
+zend_extension = "/usr/lib/php5/20090626+lfs/xdebug.so"
+xdebug.remote_enable=on
+xdebug.remote_handler=dbgp
+xdebug.remote_mode=req
+xdebug.remote_host=localhost
+xdebug.remote_port=9090
+
+# restart apache
+
+# APTANA create new PHP server, with following data:
+Name: localhost
+Base URL: http://localhost
+Document Root: /var/www
+
+
+
+
+
+
+
+
+
 
 
