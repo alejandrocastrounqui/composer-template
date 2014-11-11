@@ -10,6 +10,9 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install apache2
 
+# change root directory
+sudo geany /etc/apache2/sites-available/000-default.conf
+
 ##############################
 #            mysql           #
 ##############################
@@ -80,7 +83,7 @@ composer update --no-scripts
 
 sudo apt-get install php5-dev php-pear
 
-sudo pecl install php-xdebug
+sudo pecl install php5-xdebug
 
 # add to php.ini
 # '20121212' can change depending on OS version
@@ -120,21 +123,40 @@ Document Root: /var/www
 
 
 ##############################
+#         phpmyadmin         #
+##############################
+
+# install
+sudo apt-get install phpmyadmin apache2-utils
+
+# Select Apache2 for the server
+# input mysql password
+# let phpmyadmin password blank
+
+# add next line to sudo nano /etc/apache2/apache2.conf
+Include /etc/phpmyadmin/apache.conf
+
+# restart apache and check localhost/phpmyadmin (use 'root' user and mysql password)
+
+
+##############################
 #           laravel          #
 ##############################
 
-#install laravel-installer
+# install laravel-installer
 
 sudo composer global require "laravel/installer=~1.1"
 
-#create proyect
+# create proyect
 sudo composer create-project laravel/laravel project-name --prefer-dist
 
-#change permmission
-sudo chmod 774 -R project-name/
+# change permission
+sudo chmod 755 -R project-name/
+sudo chmod -R 775 project-name/app/storage
 
-#change owner
+# change owner
 sudo chown desarrollo:desarrollo -R project-name/
+sudo chown -R :www-data project-name/app/storage
 
 
 
